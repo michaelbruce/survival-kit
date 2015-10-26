@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# Links dotfiles to home repo.
+
+# store the dotfile folder location
+cd $(dirname $BASH_SOURCE)
+BASE=$(pwd)
+
+# Soft-linking the real dotfiles
+for rc in *rc *profile; do
+  mkdir -pv backup
+  [ -e ~/.$rc ] && mv -v ~/.$rc backup/.$rc
+  ln -sfv $BASE/$rc ~/.$rc
+done
+
+[ -d ~/.vim ] && [ ! -L ~/.vim ] && mv -v ~/.vim backup/.vim
+[ ! -d ~/.vim ] && ln -sfv $BASE/vim ~/.vim
