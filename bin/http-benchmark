@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+# Used to perform multiple requests of urls for benchmarking
+#
+# @example
+#   # Requests the url 3 times outputting times for each
+#   ./benchmark_url 3 http://my.url.com
+#   ruby benchmark_url 3 http://my.url.com
+#
+#   # Requests each url 5 times outputting times for each
+#   ./benchmark_url 5 http://my.url.com http://my.url2.com
+#   ruby benchmark_url 5 http://my.url.com http://my.url2.com
+
+
+require 'benchmark'
+require 'net/http'
+require 'uri'
+
+numtimes = ARGV.shift
+urls = ARGV
+
+urls.each do |u|
+  total = 0
+  puts u
+  puts '=' * u.length
+  (1..numtimes.to_i).each do |n|
+    time = Benchmark.realtime {Net::HTTP.get_response(URI.parse(u))}
+    puts "#{u} - #{n} : #{time}s"
+    total += time
+  end
+  puts '=' * u.length
+  puts "Average for #{u} : #{(total / numtimes.to_i).round(4)}s"
+  puts "\n"
+end

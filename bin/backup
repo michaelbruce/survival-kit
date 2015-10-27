@@ -1,0 +1,41 @@
+#!/usr/bin/ruby
+
+puts 'Starting Backup Utility'
+
+# get home
+Dir.chdir(Dir.home)
+
+# determine if backup drive is connected
+
+#find files
+#Music...
+#Pictures...
+#Documents
+#Workspace
+#Phone
+
+# hash of directories
+
+locations = {
+  Music: 'Music',
+  Pictures: 'Pictures',
+  Documents: 'Documents',
+  Workspace: 'Workspace',
+  Phone: '000media...'
+}
+
+locations.each { |name, location|
+  p location
+}
+
+# unless Dir.exist?(directory)
+
+# for each, work out their size and difference
+
+# determine if backup drive has enough free space
+
+# perform the backup
+  # Pictures and Phone Pictures should be on the same file...
+
+# phone should have git installed - python version? anything tbh sync your notes
+

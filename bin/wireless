@@ -1,0 +1,27 @@
+#!/bin/bash
+# Connect arch laptop to wifi
+
+export supplicant_file="$HOME/.local/wpa_supplicant.conf"
+
+if [[ -n $* ]]; then
+  if [[ $1 == 'off' ]]; then
+    sudo ip link set wlan0 down > /dev/null 2>&1
+    echo 'Wireless disabled'
+  elif [[ $1 == 'android' ]]; then
+    supplicant_file="$HOME/.local/android_wpa_supplicant.conf"
+    echo 'Using Android Tethering'
+  elif [[ $1 == 'work' ]]; then
+    supplicant_file="$HOME/.local/work_wpa_supplicant.conf"
+  fi
+fi
+
+# Turn on wifi card
+if [[ -n $(ip link | grep -i 'wlan0' | grep 'DOWN') ]]; then
+  sudo ip link set wlan0 up > /dev/null 2>&1
+fi
+
+# sudo wpa_supplicant -B -i wlan0 -c <(wpa_passphrase MYSSID passphrase)
+sudo wpa_supplicant -B -i wlan0 -c $supplicant_file
+sudo dhcpcd
+
+# OSX section

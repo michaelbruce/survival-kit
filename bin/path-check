@@ -1,0 +1,17 @@
+#!/usr/bin/ruby
+
+puts "Checking paths in #{ENV['PATH']}"
+
+paths = ENV['PATH'].split(':')
+
+paths.each {|path| puts "Path #{path} not found" unless Dir.exist?(path) }
+
+reference_count = 0
+paths.each do |path|
+  if Dir.exist?(path)
+    Dir.chdir(path)
+    reference_count += `ls | wc -l`.to_i
+  end
+end
+
+puts reference_count

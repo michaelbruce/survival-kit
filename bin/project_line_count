@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for file in $(git ls-tree --full-tree -r HEAD --name-only --full-name); do
+  wc -l $file
+done

@@ -1,0 +1,23 @@
+#!/usr/bin/ruby
+
+require 'csv'
+require 'pry'
+# require 'roo-xls'
+# require 'roo'
+require 'nokogiri'
+
+def csv_read(filename)
+  CSV.read(
+    filename,
+    {headers: true,
+     encoding: 'utf-8', # try 'bom|utf16le' for arabic/utf16 (old 'utf-8')
+     header_converters: :symbol,
+     converters: lambda { |value| (value.nil? || value.downcase == 'null') ? '' : value.strip }})
+end
+
+raise 'No filename specified' if ARGV[1].nil?
+file = csv_read(ARGV[1]) if ARGV[1].end_with?('.csv')
+file = Nokogiri::XML(File.open(ARGV[1])) if ARGV[1].end_with?('.xml')
+# file = Roo::Excel.new(ARGV[1]) if ARGV[1].end_with?('.xls')
+# xlsx = Roo::Spreadsheet.open(ARGV[1]) if ARGV[1].end_with?('.xlsx')
+binding.pry

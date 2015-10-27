@@ -1,0 +1,81 @@
+#!/usr/bin/ruby
+
+require_relative '../scripts/colorize.rb'
+require 'csv'
+
+class Repository
+  def initialize(record)
+    @name = record[:name]
+    @location = record[:location]
+    @branch = record[:branch]
+  end
+
+  def path
+    Dir.home + '/' + (@location || '') + '/' + @name
+  end
+
+  def exist?
+    Dir.exist?(path)
+  end
+
+  def status
+    return puts "[#{@name} was not found locally]".red unless exist?
+
+    Dir.chdir(path)
+
+    git_output = `git status -bs --porcelain`.split("\n")
+
+    if git_output.size == 1
+      display_details(git_output)
+    else
+      display_modified(git_output)
+    end
+  end
+
+  def display_details(git_output)
+    message = @name.green
+    message = @name.blue + ' (' + 'ahead'.yellow + ')' if git_output[0].include?('ahead')
+    puts message
+  end
+
+  def action
+    case ARGV[0]
+    when 'push'
+      push_ahead(git_output)
+    end
+  end
+
+  def push_ahead(git_output)
+    puts "pushing #{@name}".blue if git_output[0].include?('ahead')
+  end
+
+  def display_modified(git_output)
+    puts @name.super_pink + '//' + (git_output.size - 1).to_s.blue
+    git_output.each_with_index do |line, position|
+      line = line.yellow if position == 0 && line.include?('ahead')
+      puts line
+    end
+  end
+end
+
+class Quartermaster
+  def initialize(filename)
+    csv_read(filename).each do|repo|
+      repository = Repository.new(repo)
+      repository.status
+      repository.action unless ARGV[0].nil?
+    end
+  end
+
+  def csv_read(filename)
+    CSV.read(
+      File.expand_path("../#{filename}", __FILE__),
+      { headers: true,
+        encoding: 'utf-8',
+        header_converters: :symbol,
+        converters: lambda { |value| (value.nil? || value.downcase == 'null') ? '' : value.strip } }
+    )
+  end
+end
+
+Quartermaster.new('../scripts/repo_list.csv')
