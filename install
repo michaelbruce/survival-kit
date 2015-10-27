@@ -15,3 +15,5 @@ done
 
 [ -d ~/.vim ] && [ ! -L ~/.vim ] && mv -v ~/.vim backup/.vim
 [ ! -d ~/.vim ] && ln -sfv $BASE/vim ~/.vim
+
+# Download inconsolata-g here: http://leonardo-m.livejournal.com/77079.html 

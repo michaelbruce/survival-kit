@@ -22,10 +22,6 @@ shopt -s checkwinsize
 ### Disable CTRL-S and CTRL-Q
 [[ $- =~ i ]] && stty -ixoff -ixon
 
-### Resume with C-z
-stty susp undef
-bind '"\C-z":"zorv\015"'
-
 #}}}
 # Environment Variables {{{
 
@@ -308,14 +304,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
   builtin cd "${new_directory}" && ls --color
 fi
-}
-
-zorv () {
-  if [[ -z $(jobs) ]]; then
-    vim
-  else
-    fg
-  fi
 }
 
 evelyn-tree() {
