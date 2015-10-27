@@ -61,12 +61,6 @@ fi
 #}}}
 # Aliases {{{
 
-alias v='vim'
-alias ve='vim -e'
-alias e='emacs -nw'
-alias ed='emacs -nw --debug-init'
-alias eq='emacs -nw -q'
-alias say='cowsay'
 alias j='jobs'
 alias r='source ~/.bashrc'
 alias l='ls -alF'

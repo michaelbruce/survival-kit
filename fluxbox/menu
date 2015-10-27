@@ -1,0 +1,35 @@
+[begin] (Evelyn)
+[encoding] {UTF-8}
+      [exec] (urxvt - terminal) {urxvt}
+      [exec] (vim?) {emacs}
+      [exec] (chrome) {google-chrome-stable}
+      [exec] (firefox) {}
+      [exec] (evince) {}
+      [exec] (gimp - image editor) {gimp}
+      [exec] (minecraft) {minecraft}
+      [exec] (Thunar - window manager) {thunar}
+      [exec]   (Run) {fbrun}
+[submenu] (Advanced settings)
+      [config] (Configure)
+      [workspaces] (Workspace List)
+[submenu] (Backgrounds)
+      [wallpapers] (~/.fluxbox/backgrounds) {feh --bg-scale}
+      [wallpapers] (/usr/share/fluxbox/backgrounds) {feh --bg-scale}
+      [wallpapers] (~/Pictures/backgrounds) {feh --bg-scale}
+[end]
+[submenu] (Keyboard)
+      [exec] (normal) {setxkbmap us}
+      [exec] (international) {setxkbmap us -variant intl}
+[end]
+[submenu] (Tools)
+      [exec] (Run) {fbrun}
+      [exec] (Regen Menu) {fluxbox-generate_menu}
+[end]
+      [commanddialog] (Fluxbox Command)
+      [reconfig] (Reload config)
+      [restart] (Restart)
+      [separator]
+      [exit] (Exit)
+[end]
+[endencoding]
+[end]

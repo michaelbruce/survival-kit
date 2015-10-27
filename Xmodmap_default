@@ -1,0 +1,8 @@
+!remove Control = Control_R
+!keycode 105 = Super_L
+keycode 66 = Control_L
+clear Lock
+add Control = Control_L
+! keycode 94 = grave asciitilde
+keycode 49 = asciitilde
+keycode 122 = F11

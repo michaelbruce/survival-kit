@@ -1,0 +1,52 @@
+URxvt.geometry:             175x45
+URxvt*scrollBar:            false
+URxvt*scrollBar_right:      true
+URxvt*scrollColor:          #000000
+URxvt*font:                 xft:Inconsolata:bold:pixelsize=15:antialias=true:hinting=slight
+URxvt*boldFont:             xft:Inconsolata:bold:pixelsize=15:antialias=true:hinting=slight
+urxvt*perl-lib:             /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:      default,clipboard,url-select,keyboard-select,font
+URxvt.url-select.launcher:  google-chrome
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+xterm*metaSendsEscape:      true
+
+! Fix for screen clearing on suspend: http://www.shallowsky.com/linux/noaltscreen.html
+urxvt*secondaryScreen: false
+!urxvt.keysym.C-equal: perl:font:increment
+!urxvt.keysym.C-minus: perl:font:decrement
+Xft.dpi: 72
+Xft.embolden: true ! required for antialiasing in emacs
+XTerm*cursorBlink: false
+
+! Monokai theme adapted for URxvt
+! URxvt*background: #1D1E1A
+! works! too light
+! URxvt*background: #262626
+!
+! also works but too dark (28,28,27)
+! URxvt*background: #1c1c1b
+
+URxvt*background: #222222
+URxvt*foreground: #EEEEEE
+URxvt*color0: #696969
+URxvt*color1: #F3074C
+URxvt*color2: #88D400
+URxvt*color3: #E0D64F
+URxvt*color4: #4EBFEA
+URxvt*color5: #F06A00
+URxvt*color6: #9263FF
+URxvt*color7: #EEEEEE
+URxvt*color8: #1D1E1A
+URxvt*color9: #E5002E
+URxvt*color10: #88D400
+URxvt*color11: #E0D64F
+URxvt*color12: #4EBFEA
+URxvt*color13: #F06A00
+URxvt*color14: #FD365B
+URxvt*color15: #EEEEEE
+URxvt*cursorColor: #696969
+URxvt*cursorColor2: #1D1E1A
+URxvt*colorBD: #EEEEEE

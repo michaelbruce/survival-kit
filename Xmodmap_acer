@@ -1,0 +1,28 @@
+! Caps lock remapped to Control
+keycode 66 = Control_L
+clear Lock
+add Control = Control_L
+
+keycode 94 = grave asciitilde
+keycode 122 = F11
+
+clear Mod1
+clear Mod4
+
+! Left Super key
+keycode 133 = Alt_L
+
+! Left Alt key
+keycode 64 = Super_L
+
+add Mod1 = Alt_L
+add Mod4 = Super_L
+
+! Right Alt key
+keycode 108 = Super_R
+
+! Menu key to Alt_R
+keycode 135 = Alt_R
+
+add Mod1 = Alt_R
+add Mod4 = Super_R
