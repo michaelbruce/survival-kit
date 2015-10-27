@@ -57,6 +57,7 @@ fi
 #}}}
 # Aliases {{{
 
+alias sk='d ~/survival-kit/'
 alias j='jobs'
 alias r='source ~/.bashrc'
 alias l='ls -alF'

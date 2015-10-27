@@ -17,3 +17,6 @@ done
 [ ! -d ~/.vim ] && ln -sfv $BASE/vim ~/.vim
 
 # Download inconsolata-g here: http://leonardo-m.livejournal.com/77079.html 
+if [[ `uname -s` == "Darwin" ]]; then
+    echo 'Detected OSX
+fi
