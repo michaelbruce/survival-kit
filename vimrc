@@ -129,6 +129,7 @@ augroup END
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map Y y$
+map Q @q
 map <leader>y "*y
 map gy :Alternate<CR>
 " Move around splits with <c-hjkl>

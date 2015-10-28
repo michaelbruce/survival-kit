@@ -29,6 +29,7 @@ KEY_CTRL_U = ?\C-u
 KEY_CTRL_H = ?\C-h
 KEY_CTRL_W = ?\C-w
 KEY_CTRL_J = ?\C-j
+KEY_CTRL_K = ?\C-k
 KEY_CTRL_M = ?\C-m
 KEY_DELETE = 127.chr # Equivalent to ?\C-?
 
@@ -129,14 +130,14 @@ class Selecta
   def handle_control_character(search, key)
     case key
 
-    when KEY_CTRL_N then search.down
-    when KEY_CTRL_P then search.up
+    when KEY_CTRL_N, KEY_CTRL_J then search.down
+    when KEY_CTRL_P, KEY_CTRL_K then search.up
 
     when KEY_CTRL_U then search.clear_query
     when KEY_CTRL_W then search.delete_word
     when KEY_CTRL_H, KEY_DELETE then search.backspace
 
-    when ?\r, KEY_CTRL_J, KEY_CTRL_M then search.done
+    when ?\r, KEY_CTRL_M then search.done
 
     when KEY_CTRL_C then raise Abort
 
