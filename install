@@ -18,5 +18,5 @@ done
 
 # Download inconsolata-g here: http://leonardo-m.livejournal.com/77079.html 
 if [[ `uname -s` == "Darwin" ]]; then
-    echo 'Detected OSX
+    echo 'Detected OSX'
 fi
