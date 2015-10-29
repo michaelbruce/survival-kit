@@ -1,6 +1,5 @@
 #!/usr/bin/ruby
 
-require_relative '../scripts/colorize.rb'
 require 'csv'
 
 class Repository
@@ -69,7 +68,7 @@ class Quartermaster
 
   def csv_read(filename)
     CSV.read(
-      File.expand_path("../#{filename}", __FILE__),
+      File.expand_path(filename, __FILE__),
       { headers: true,
         encoding: 'utf-8',
         header_converters: :symbol,
@@ -78,4 +77,35 @@ class Quartermaster
   end
 end
 
-Quartermaster.new('../scripts/repo_list.csv')
+class String
+  def colorize(color_code)
+    "\e[#{color_code}m#{self}\e[0m"
+  end
+
+  def red
+    colorize(31)
+  end
+
+  def green
+    colorize(32)
+  end
+
+  def yellow
+    colorize(33)
+  end
+
+  def blue
+    colorize(34)
+  end
+
+  def pink
+    colorize(35)
+  end
+
+  def super_pink
+    colorize(36)
+  end
+end
+
+
+Quartermaster.new(Dir.home + '/notes/repo_list.csv')
