@@ -8,8 +8,7 @@ call pathogen#incubate()
 set cb=unnamed,unnamedplus " Link clipboard to system clipboard on osx & linux.
 set nocompatible
 set hidden
-" remember more commands and search history
-set history=10000
+set history=10000 " remember more commands and search history
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -19,23 +18,18 @@ set laststatus=1
 set showmatch
 set incsearch
 set hlsearch
-" make searches case-sensitive only if they contain upper-case characters
-set ignorecase smartcase
-" highlight current line
-set cursorline
+set ignorecase smartcase " make searches case-sensitive only if they contain upper-case characters
+set nocursorline
 set cmdheight=1
 set switchbuf=useopen
 set showtabline=1
 set winwidth=79
-" This makes RVM work inside Vim. I have no idea why.
-set shell=bash
+set shell=bash " This makes RVM work inside Vim. I have no idea why.
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
 set t_ti= t_te=
-" keep more context when scrolling off the end of a buffer
-set scrolloff=3
-" Don't make backups at all
-set nobackup
+set scrolloff=3 " keep more context when scrolling off the end of a buffer
+set nobackup " Don't make backups at all
 set nowritebackup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -71,6 +65,7 @@ set nofoldenable
 " punctuation like `.`.
 set nojoinspaces
 " If a file is changed outside of vim, automatically reload it without asking
+set shortmess+=Ixmn " disables startup message, among other things :help!
 set autoread
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,7 +113,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set t_Co=256 " 256 colors
 :set background=dark
-:color grb256
+:color mikepjb
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
