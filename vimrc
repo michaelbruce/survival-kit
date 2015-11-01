@@ -15,7 +15,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autoindent
-set laststatus=2
+set laststatus=1
 set showmatch
 set incsearch
 set hlsearch
@@ -25,7 +25,7 @@ set ignorecase smartcase
 set cursorline
 set cmdheight=1
 set switchbuf=useopen
-set showtabline=2
+set showtabline=1
 set winwidth=79
 " This makes RVM work inside Vim. I have no idea why.
 set shell=bash

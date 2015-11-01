@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/mikepjb/survival-kit'
 let g:netrw_dirhist_2='/Users/mikepjb/code/scratchland/violent_python'
 let g:netrw_dirhist_3='/Users/mikepjb/code/scratchland'
 let g:netrw_dirhist_4='/Users/mikepjb/survival-kit/Library'
 let g:netrw_dirhist_5='/Users/mikepjb/survival-kit/Library/AppleScripts'
+let g:netrw_dirhist_6='/Users/mikepjb/code/original-emacs'
