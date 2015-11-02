@@ -7,16 +7,12 @@ export PLATFORM=$(uname -s)
 
 BASE=$(dirname $(readlink $BASH_SOURCE))
 
-### Append to the history file
-shopt -s histappend
-
-### Check the window size after each command ($LINES, $COLUMNS)
-shopt -s checkwinsize
+shopt -s histappend # Append to the history file
+shopt -s checkwinsize # Check the window size after each command
 
 ### Better-looking less for binary files
 [ -x /usr/bin/lesspipe    ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-### Bash completion
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 
 ### Disable CTRL-S and CTRL-Q
@@ -64,28 +60,17 @@ alias ll='ls -a'
 alias d='cs'
 alias .d='cd ~/dotfiles'
 alias .n='cd ~/notes'
-alias .k='cd ~/survival-kit/'
+alias .k='cd ~/survival-kit'
 alias rv='rbenv versions'
 alias op='cd ~/code/'
 alias b='bundle exec rake spec'
 alias bi='bundle install'
 alias be='bundle exec'
-alias apu='ant pushToMyOrg'
-alias adr='ant deployResources'
 alias mi='make install'
-alias mp='mvn package'
-alias mci='mvn clean install'
 alias bp='be rspec spec/processors'
 alias m='mutt'
-alias i='pry'
-alias k='python'
-alias p8='ping 8.8.8.8'
 alias pgstart='sudo systemctl start postgresql'
-alias mc='minecraft'
 alias cl='for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done' #print colors
-alias fv='fg %1'
-alias fb='fg %2'
-alias fn='fg %3'
 alias t='tmux_connect'
 alias y='evelyn-tree'
 alias o='nautilus . &'
@@ -98,10 +83,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 fi
 alias ct='ctags -R --extra=+q --exclude=.git --exclude=log --langmap=java:.cls.trigger  -f $(git rev-parse --show-toplevel)/.tags . $(bundle list --paths)'
-alias cm='cmatrix -a -C magenta'
-alias da='date'
-alias j='jobs'
-alias x='sudo xkill'
 
 # Location aliases
 alias ..='cd ..'
@@ -122,37 +103,19 @@ alias sdm='cd ~/code/Singletrack-Data-Migration'
 alias sm='cd ~/code/Singletrack-Monitor'
 alias sd='cd ~/code/Singletrack-Core/SingletrackDev'
 alias scc='clear && d ~/code/Singletrack-Customer-Customisations'
-alias neo='cd ~/code/neovim'
-alias oot='cd ~/code/oot2d-cljs'
 alias doc='cd ~/Documents'
 alias dl='cd ~/Downloads'
 alias dt='d ~/Desktop'
 alias n='d ~/code/scratchland/'
-alias mu='d ~/Music && cmus'
-alias sound='pavucontrol'
 alias ggwp='sudo shutdown -h 0'
-alias pi='sudo pacman -S'
-alias pup='sudo pacman -Sy'
-alias pall='sudo pacman -Syu'
-alias pr='sudo pacman -R'
 alias sx='startx'
 alias ri='PAGER="less -R" ri -f ansi'
-alias pu='pu_prompt'
-alias po='popd'
-
-# Development aliases
 alias hl='color_heroku_logs'
-alias ha='heroku apps'
-alias hr='heroku run -a'
-alias hs='heroku ps:scale web=0'
 
 # Git aliases
-alias gl='git log'
 alias f='git diff'
-alias gs='git status'
 alias co='git checkout'
 alias gcf='git clean -f'
-alias gdt='git difftool'
 alias gla='git listall'
 alias s='git status'
 alias a='git add'
@@ -162,33 +125,25 @@ alias c!='git commit --amend'
 alias u='git-up'
 alias p='git push'
 alias g='git l -20'
-alias gg='git l'
 alias ungc='git reset --soft HEAD~1'
 alias clo='git clone'
 alias gdc='git diff --cached' # diff staged files
-alias gsu='git submodule update'
 alias gsh='git show'
 alias gb='git branch'
 alias gba='git branch -a'
-alias gsp='git submodule foreach "git pull"'
-alias gd='git diff'
 alias grt='d $(git rev-parse --show-toplevel || echo ".")'
 alias gf='git fetch'
 alias gfi='git flow init'
-alias gffs='git flow feature start'
-alias gfff='git flow feature finish'
-alias gffp='git flow feature publish'
+alias fs='git flow feature start'
+alias ff='git flow feature finish'
+alias fp='git flow feature publish'
 alias gr='git remote'
-alias grem="git config --global credential.helper 'cache --timeout=3600'"
 alias grb='git ls-remote --heads origin'
 alias grv='git remote -v'
 alias gcl='git config --list'
 alias gcp='git cherry-pick'
 alias gcount='git shortlog -sn'
 alias gall='ruby ~/dotfiles/scripts/git_commit_counter.rb'
-alias gst='git stash'
-alias gstp='git stash pop'
-alias gsts='git stash show'
 alias gm='git merge'
 alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
@@ -210,34 +165,20 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 
 PROMPT_COMMAND='TIME=$(time_prompt) && GIT=$(git_prompt)'
 
-PS1="\w(\[\$TIME\]\[\$GIT\]) "
-
-# if which tmux 2>&1 >/dev/null; then # Always work in a tmux session if tmux is installed
-#     if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ] && [ $TERM != "linux" ] && [ $TERM != "eterm-color" ]; then
-#         tmux attach -t o || tmux new -s o; exit
-#     fi
-# fi
+PS1="\w(\$TIME\$GIT) $ "
 
 # }}}
 # Custom Functions {{{
 
-clear_color ()
-{
-    echo -ne "\033[0m"
-}
-
-pu_prompt ()
-{
-  new_dir="$*";
-  if [ $# -eq 0 ]; then
-    new_dir="$HOME";
-  fi;
-  pushd "${new_dir}"
-}
+c_clear="\033[0m"
+c_green=`tput setaf 2`
+c_magenta=`tput setaf 14`
+c_yellow=`tput setaf 11`
+c_blue=`tput setaf 4`
 
 git_prompt ()
 {
-  echo -e "$(branch_color)$(parse_git_branch)$(clear_color)"
+  echo -e "$(branch_color)$(parse_git_branch)$c_clear"
 }
 
 parse_git_branch ()
@@ -250,11 +191,6 @@ parse_git_branch ()
   fi
   echo -e "$gitver"
 }
-
-c_green=`tput setaf 2`
-c_magenta=`tput setaf 14`
-c_yellow=`tput setaf 11`
-c_blue=`tput setaf 4`
 
 branch_color ()
 {
@@ -336,8 +272,7 @@ function time_prompt {
       color="${c_magenta}"
     fi
 
-    echo -ne "$color$minutes"
-    clear_color
+    echo -ne "$color$minutes$c_clear"
     echo -ne "$seperator"
 }
 

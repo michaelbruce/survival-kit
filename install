@@ -20,3 +20,6 @@ done
 if [[ `uname -s` == "Darwin" ]]; then
     echo 'Detected OSX'
 fi
+
+# 1. Ruby - rbenv?
+# 2. Clojure - lein? + profiles.clj, incl lein-exec

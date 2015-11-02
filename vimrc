@@ -526,4 +526,4 @@ function! SelectaIdentifier()
   " the cursor
   call SelectaCommand("find * -type f", "-s " . @z, ":e")
 endfunction
-nnoremap <c-g> :call SelectaIdentifier()<cr>
+"nnoremap <c-g> :call SelectaIdentifier()<cr>
