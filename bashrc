@@ -54,6 +54,8 @@ fi
 # Aliases {{{
 
 alias sk='d ~/survival-kit/'
+alias space='df -h'
+alias .space='du -h'
 alias r='source ~/.bashrc'
 alias l='ls -alF'
 alias ll='ls -a'
