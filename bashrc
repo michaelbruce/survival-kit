@@ -272,7 +272,9 @@ function time_prompt {
       color="${c_magenta}"
     fi
 
-    echo -ne "\001$color\002$minutes\001$c_clear\002"
+    echo -ne "\001$color\002"
+    echo -ne "$minutes"
+    echo -ne "\001$c_clear\002"
     echo -ne "$seperator"
 }
 
