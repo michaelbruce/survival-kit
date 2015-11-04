@@ -178,13 +178,11 @@ c_magenta=`tput setaf 14`
 c_yellow=`tput setaf 11`
 c_blue=`tput setaf 4`
 
-git_prompt ()
-{
-  echo -e "$(branch_color)$(parse_git_branch)$c_clear"
+function git_prompt {
+  echo -e "\001$(branch_color)\002$(parse_git_branch)\001$c_clear\002"
 }
 
-parse_git_branch ()
-{
+function parse_git_branch {
   if git rev-parse --git-dir >/dev/null 2>&1
   then
           gitver="$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')"
@@ -274,7 +272,7 @@ function time_prompt {
       color="${c_magenta}"
     fi
 
-    echo -ne "$color$minutes$c_clear"
+    echo -ne "\001$color\002$minutes\001$c_clear\002"
     echo -ne "$seperator"
 }
 
