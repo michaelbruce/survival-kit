@@ -14,8 +14,8 @@ for rc in *rc *profile; do
 done
 
 # Clojure Setup
-[ -e ~/.lein/projects.clj ] && mv -v ~/.lein/projects.clj backup/projects.clj
-ln -sfv $BASE/projects.clj ~/.lein/projects.clj
+[ -e ~/.lein/profiles.clj ] && mv -v ~/.lein/profiles.clj backup/profiles.clj
+ln -sfv $BASE/profiles.clj ~/.lein/profiles.clj
 
 [ -d ~/.vim ] && [ ! -L ~/.vim ] && mv -v ~/.vim backup/.vim
 [ ! -d ~/.vim ] && ln -sfv $BASE/vim ~/.vim
