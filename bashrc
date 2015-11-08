@@ -28,10 +28,8 @@ export HISTFILESIZE=
 export HISTTIMEFORMAT="%Y/%m/%d %H:%M:%S:   "
 [ -z "$TMPDIR" ] && TMPDIR=/tmp
 
+export EDITOR=vim
 VIMRUNTIME=/usr/local/bin/vim
-
-### Use color with ri
-RI="--format ansi --width 80"
 
 ### Global
 if [ -z "$PATH_EXPANDED" ]; then
@@ -40,13 +38,10 @@ if [ -z "$PATH_EXPANDED" ]; then
 fi
 
 eval "$(rbenv init -)"
-export EDITOR=vim
 export LANG=en_US.UTF-8
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.:/usr/local/lib
   export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home'
-
-  ### OS X
   export COPYFILE_DISABLE=true
 fi
 
@@ -58,9 +53,7 @@ alias space='df -h'
 alias .space='du -h'
 alias r='source ~/.bashrc'
 alias l='ls -alF'
-alias ll='ls -a'
 alias d='cs'
-alias .d='cd ~/dotfiles'
 alias .n='cd ~/notes'
 alias .k='cd ~/survival-kit'
 alias rv='rbenv versions'
@@ -68,23 +61,19 @@ alias op='cd ~/code/'
 alias b='bundle exec rake spec'
 alias bi='bundle install'
 alias be='bundle exec'
-alias mi='make install'
 alias bp='be rspec spec/processors'
 alias m='mutt'
 alias pgstart='sudo systemctl start postgresql'
 alias cl='for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done' #print colors
 alias t='tmux_connect'
 alias y='evelyn-tree'
-alias o='nautilus . &'
 alias ac='acpi'
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  alias o="open ."
   alias acpi="pmset -g batt"
-  alias pi='brew install'
   alias ctags="`brew --prefix`/bin/ctags"
   alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 fi
-alias ct='ctags -R --extra=+q --exclude=.git --exclude=log --langmap=java:.cls.trigger  -f $(git rev-parse --show-toplevel)/.tags . $(bundle list --paths)'
 
 # Location aliases
 alias ..='cd ..'
@@ -109,8 +98,6 @@ alias doc='cd ~/Documents'
 alias dl='cd ~/Downloads'
 alias dt='d ~/Desktop'
 alias n='d ~/code/scratchland/'
-alias ggwp='sudo shutdown -h 0'
-alias sx='startx'
 alias ri='PAGER="less -R" ri -f ansi'
 alias hl='color_heroku_logs'
 
