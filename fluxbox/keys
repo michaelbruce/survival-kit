@@ -1,13 +1,14 @@
 # Fluxbox bindings config
 
 # Aliases {{{1
-Control 49 :Exec urxvt
+#Control 49 :Exec urxvt
+Control space :Exec urxvt
 Mod4 49 :Exec google-chrome-stable
 Control Mod1 49 :Exec skype
 Control Mod1 94 :Exec minecraft
 Control Mod4 42 :Exec gimp
 Control Mod4 39 :Exec pavucontrol
-Mod4 36 :Fullscreen
+Mod1 36 :Fullscreen
 Control Mod4 58 :Exec minecraft
 F4 :Exec skippy-xd
 
@@ -56,9 +57,9 @@ OnTitlebar Mouse2 :Lower
 OnTitlebar Mouse3 :WindowMenu
 
 # Alt Tab
-Mod4 Tab :NextWindow {groups} (workspace=[current])
-Mod4 Shift Tab :PrevWindow {groups} (workspace=[current])
-Mod4 g :NextWindow {groups} (workspace=[current])
+Mod1 Tab :NextWindow {groups} (workspace=[current])
+Mod1 Shift Tab :PrevWindow {groups} (workspace=[current])
+Mod1 g :NextWindow {groups} (workspace=[current])
 
 # Super mappings {{{1
 Mod4 w :Exec xvkbd -xsendevent -text "\Cw"

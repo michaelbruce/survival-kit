@@ -13,6 +13,14 @@ for rc in *rc *profile; do
   ln -sfv $BASE/$rc ~/.$rc
 done
 
+# Load correct Xmodmap
+if [[ `uname -n` == "mikepjb-laptop" ]]; then
+  ln -sfv $BASE/Xmodmap_acer ~/.Xmodmap
+else
+  ln -sfv $BASE/Xmodmap_default ~/.Xmodmap
+fi
+
+
 # Clojure Setup
 [ -e ~/.lein/profiles.clj ] && mv -v ~/.lein/profiles.clj backup/profiles.clj
 ln -sfv $BASE/profiles.clj ~/.lein/profiles.clj
@@ -27,3 +35,11 @@ fi
 
 # 1. Ruby - rbenv?
 # 2. Clojure - lein? + profiles.clj, incl lein-exec
+
+# --- Arch Linux Specific section -------------------------------------------------- 
+
+if [[ `uname -s` == "Linux" ]]; then
+    # Linking fluxbox folder
+    [ -d ~/.fluxbox ] && [ ! -L ~/.fluxbox ] && mv -v ~/.fluxbox bak/.fluxbox
+    [ ! -d ~/.fluxbox ] && ln -sfv $BASE/fluxbox ~/.fluxbox
+fi

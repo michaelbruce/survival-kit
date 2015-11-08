@@ -201,33 +201,33 @@ viw() {
 }
 
 color_heroku_logs() {
-  heroku logs --tail -a $1 |
-  ack --flush --color --passthru --color-match=yellow "^.*host.*" |
-  ack --flush --color --passthru --color-match=red "^.*ERROR.*" |
-  ack --flush --color --passthru --color-match=red "^.*Exception*" |
-  ack --flush --color --passthru --color --color-match=green "^.*INFO.*" |
-  ack --flush --color --passthru --color --color-match=magenta "^.*FileFinder.*"
+    heroku logs --tail -a $1 |
+    ack --flush --color --passthru --color-match=yellow "^.*host.*" |
+    ack --flush --color --passthru --color-match=red "^.*ERROR.*" |
+    ack --flush --color --passthru --color-match=red "^.*Exception*" |
+    ack --flush --color --passthru --color --color-match=green "^.*INFO.*" |
+    ack --flush --color --passthru --color --color-match=magenta "^.*FileFinder.*"
 }
 
 function cs() {
-new_directory="$*";
-if [ $# -eq 0 ]; then 
-    new_directory=${HOME};
-fi;
+    new_directory="$*";
+    if [ $# -eq 0 ]; then 
+        new_directory=${HOME};
+    fi;
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  builtin cd "${new_directory}" && ls -G
-else
-  builtin cd "${new_directory}" && ls --color
-fi
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      builtin cd "${new_directory}" && ls -G
+    else
+      builtin cd "${new_directory}" && ls --color
+    fi
 }
 
 evelyn-tree() {
-  tree_depth="$*";
-  if [ $# -eq 0 ]; then
-      tree_depth=1;
-  fi;
-  tree -d -L "${tree_depth}"
+    tree_depth="$*";
+    if [ $# -eq 0 ]; then
+        tree_depth=1;
+    fi;
+    tree -d -L "${tree_depth}"
 }
 
 function minutes_since_last_commit {
@@ -267,11 +267,11 @@ function time_prompt {
 
 
 function tmux_connect {
-  if which tmux 2>&1 >/dev/null; then
-    if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-      tmux attach -t home || tmux new -s home; exit
+    if which tmux 2>&1 >/dev/null; then
+        if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
+            tmux attach -t home || tmux new -s home; exit
+        fi
     fi
-  fi
 }
 
 # }}}

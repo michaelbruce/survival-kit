@@ -2,6 +2,3 @@
   [Position]	(CENTER)	{0 0}
   [Layer]	{2}
 [end]
-[app] (name=urxvt) (class=URxvt)
-  [Alpha]	{225}
-[end]
