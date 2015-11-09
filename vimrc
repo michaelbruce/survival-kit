@@ -316,13 +316,21 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 " RUNNING TESTS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! MapCR()
-  nnoremap <cr> :call RunTestFile()<cr>
+  nnoremap <cr> :call Test()<cr>
 endfunction
 call MapCR()
 nnoremap <leader>T :call RunNearestTest()<cr>
 nnoremap <leader>a :call RunTests('')<cr>
 nnoremap <leader>c :w\|:!script/features<cr>
 nnoremap <leader>w :w\|:!script/features --profile wip<cr>
+
+function! Test(...)
+  if &filetype == 'clojure'
+    exec ":!lein test"
+  else
+    call RunTestFile()
+  end
+endfunction
 
 function! RunTestFile(...)
     if a:0
