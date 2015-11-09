@@ -5,6 +5,7 @@ autocmd!
 
 call pathogen#incubate()
 
+set mouse=a
 set cb=unnamed,unnamedplus " Link clipboard to system clipboard on osx & linux.
 set nocompatible
 set hidden
