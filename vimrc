@@ -154,6 +154,8 @@ endfunction
 map <leader>l :w\|:silent !reload-chrome<cr>
 " Align selected lines
 vnoremap <leader>ib :!align<cr>
+" Navigate code folder
+map gw :e ~/code/
 
 " Readline-style key bindings in command-line (excerpt from rsi.vim)
 cnoremap        <C-A> <Home>
