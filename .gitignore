@@ -3,3 +3,6 @@ backup/*
 vim/.netrwhist
 fluxbox/fbrun_history
 fluxbox/lastwallpaper
+emacs.d/auto-save-list/
+*~
+emacs.d/mikepjb/evil/
