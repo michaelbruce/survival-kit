@@ -28,6 +28,12 @@ ln -sfv $BASE/profiles.clj ~/.lein/profiles.clj
 [ -d ~/.vim ] && [ ! -L ~/.vim ] && mv -v ~/.vim backup/.vim
 [ ! -d ~/.vim ] && ln -sfv $BASE/vim ~/.vim
 
+# Linking emacs folder
+# hg clone https://bitbucket.org/lyro/evil
+# run install script?
+[ -e ~/.emacs.d ] && mv -v ~/.emacs.d bak/.emacs.d
+[ ! -e ~/.emacs.d ] && ln -sfv $BASE/emacs.d ~/.emacs.d
+
 # Download inconsolata-g here: http://leonardo-m.livejournal.com/77079.html 
 if [[ `uname -s` == "Darwin" ]]; then
     echo 'Detected OSX'
